@@ -11,12 +11,12 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var Paddle = SKSpriteNode()
+    var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         
-        Paddle = self.childNode(withName: "bottomPaddle") as!
+        bottomPaddle = self.childNode(withName: "bottomPaddle") as!
         SKSpriteNode
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
@@ -61,14 +61,14 @@ class GameScene: SKScene {
         
         let touch = touches.first!
         let location = touch.location(in: self)
-        Paddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        bottomPaddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
         
-        Paddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        bottomPaddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
         
         
     }
