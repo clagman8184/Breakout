@@ -55,6 +55,25 @@ class GameScene: SKScene {
         
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        Paddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        
+        Paddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        
+        
+    }
+
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
