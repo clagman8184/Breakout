@@ -9,17 +9,22 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
         
         bottomPaddle = self.childNode(withName: "bottomPaddle") as!
         SKSpriteNode
-        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
+        
+        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
+        border.friction = 0
+        self.physicsBody = border
+        
         
         let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
         let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -47,11 +52,6 @@ class GameScene: SKScene {
         right.name = "right"
         bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomRight, to: topRight)
         addChild(right)
-
-        
-        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
-        border.friction = 0
-        self.physicsBody = border
         
         
     }
@@ -65,11 +65,11 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         let touch = touches.first!
         let location = touch.location(in: self)
         
         bottomPaddle.run(SKAction.moveTo(x: location.x, duration: 0.2))
-        
         
     }
 
