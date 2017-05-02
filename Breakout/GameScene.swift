@@ -27,6 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         self.physicsBody = border
         
+        self.physicsWorld.contactDelegate = self
+        
         
 //        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
 //        let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
@@ -71,7 +73,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bottomPaddle.position.x = touchLocation.x
         }
     }
-
+    func didBegin(_ contact: SKPhysicsContact) {
+        let bodyAName = contact.bodyA.node?.name
+        let bodyBName = contact.bodyB.node?.name
+        
+        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball" {
+            if bodyAName == "Brick" {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else if bodyBName == "Brick" {
+                contact.bodyB.node?.removeFromParent()
+            }
+        }
+    }
     
     override func update(_ currentTime: TimeInterval) {
         
