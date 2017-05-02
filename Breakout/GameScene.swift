@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
+    var counter = 3
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -63,7 +64,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if ball.position.y <= -250
         {
-            ball.removeFromParent()
+            if counter == 3
+            {
+                counter -= 1
+                ball.position.x = 0
+                ball.position.y = 0
+            }
+            else if counter == 2
+            {
+                counter -= 1
+                ball.position.x = 0
+                ball.position.y = 0
+
+            }
+            else if counter == 1
+            {
+                ball.removeFromParent()
+            }
         }
     }
     
