@@ -75,6 +75,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        
+        if ball.position.y <= -250
+        {
+            ball.removeFromParent()
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    
 }
