@@ -29,35 +29,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        
-//        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
-//        let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
-//        let topLeft = CGPoint(x: frame.origin.x, y: -frame.origin.y)
-//        let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
-//        
-//        let bottom = SKNode()
-//        bottom.name = "bottom"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: bottomRight)
-//        addChild(bottom)
-//        
-//        
-//        let top = SKNode()
-//        top.name = "top"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: topLeft, to: topRight)
-//        addChild(top)
-//        
-//        
-//        let left = SKNode()
-//        left.name = "left"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: topLeft)
-//        addChild(left)
-//        
-//        let right = SKNode()
-//        right.name = "right"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomRight, to: topRight)
-//        addChild(right)
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -78,7 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bodyBName = contact.bodyB.node?.name
         
         if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball" {
-            if bodyAName == "Brick" {
+            if bodyAName == "Brick"
+            {
                 contact.bodyA.node?.removeFromParent()
             }
             else if bodyBName == "Brick" {
