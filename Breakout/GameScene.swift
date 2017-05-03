@@ -23,12 +23,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         SKSpriteNode
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
+        ball.speed = 20
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
+        border.restitution = 1
         self.physicsBody = border
-        
-        self.physicsWorld.contactDelegate = self
         
         
 //        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
