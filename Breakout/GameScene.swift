@@ -14,7 +14,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
     var counter = SKLabelNode()
-    var gameover = SKLabelNode()
     
     
     override func didMove(to view: SKView) {
@@ -26,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bottomPaddle = self.childNode(withName: "bottomPaddle") as!
         SKSpriteNode
         counter = self.childNode(withName: "counter") as! SKLabelNode
-        gameover = self.childNode(withName: "counter") as! SKLabelNode
+        
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
         
@@ -88,7 +87,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             else if counter.text == "1"
             {
-                gameover.alpha = 1
                 counter.text = "0"
                 ball.removeFromParent()
             }
