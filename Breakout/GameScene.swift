@@ -34,36 +34,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         self.physicsBody = border
         
-        self.physicsWorld.contactDelegate = self
-        
-        
-//        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
-//        let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
-//        let topLeft = CGPoint(x: frame.origin.x, y: -frame.origin.y)
-//        let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
-//        
-//        let bottom = SKNode()
-//        bottom.name = "bottom"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: bottomRight)
-//        addChild(bottom)
-//        
-//        
-//        let top = SKNode()
-//        top.name = "top"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: topLeft, to: topRight)
-//        addChild(top)
-//        
-//        
-//        let left = SKNode()
-//        left.name = "left"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: topLeft)
-//        addChild(left)
-//        
-//        let right = SKNode()
-//        right.name = "right"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomRight, to: topRight)
-//        addChild(right)
-        
         
     }
     
@@ -82,14 +52,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func didBegin(_ contact: SKPhysicsContact) {
+       
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
-        
-        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball" {
-            if bodyAName == "Brick" {
+
+     if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
+        {
+            if bodyAName == "Brick"
+            {
                 contact.bodyA.node?.removeFromParent()
             }
-            else if bodyBName == "Brick" {
+            else if bodyBName == "Brick"
+            {
                 contact.bodyB.node?.removeFromParent()
             }
         }
@@ -134,6 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
    
+    
     
     
     
