@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
+    
     var counter = 3
     
     override func didMove(to view: SKView) {
@@ -28,7 +29,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         self.physicsBody = border
         
-        self.physicsWorld.contactDelegate = self
         
     }
     
@@ -46,20 +46,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func didBegin(_ contact: SKPhysicsContact) {
-        print("here")
-//        let bodyAName = contact.bodyA.node?.name
-//        let bodyBName = contact.bodyB.node?.name
-//        
-//        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"{
-//            if bodyAName == "Brick"
-//            {
-//                contact.bodyA.node?.removeFromParent()
-//            }
-//            else if bodyBName == "Brick"
-//            {
-//                contact.bodyB.node?.removeFromParent()
-//            }
-//        }
+       
+        let bodyAName = contact.bodyA.node?.name
+        let bodyBName = contact.bodyB.node?.name
+
+     if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
+        {
+            if bodyAName == "Brick"
+            {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else if bodyBName == "Brick"
+            {
+                contact.bodyB.node?.removeFromParent()
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
