@@ -46,18 +46,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func didBegin(_ contact: SKPhysicsContact) {
-        let bodyAName = contact.bodyA.node?.name
-        let bodyBName = contact.bodyB.node?.name
-        
-        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball" {
-            if bodyAName == "Brick"
-            {
-                contact.bodyA.node?.removeFromParent()
-            }
-            else if bodyBName == "Brick" {
-                contact.bodyB.node?.removeFromParent()
-            }
-        }
+        print("here")
+//        let bodyAName = contact.bodyA.node?.name
+//        let bodyBName = contact.bodyB.node?.name
+//        
+//        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"{
+//            if bodyAName == "Brick"
+//            {
+//                contact.bodyA.node?.removeFromParent()
+//            }
+//            else if bodyBName == "Brick"
+//            {
+//                contact.bodyB.node?.removeFromParent()
+//            }
+//        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -97,6 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
    
+    
     
     
     
