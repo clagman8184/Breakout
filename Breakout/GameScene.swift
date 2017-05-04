@@ -17,14 +17,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
-        
-        
-        
-        ball = self.childNode(withName: "ball") as! SKSpriteNode
-        bottomPaddle = self.childNode(withName: "bottomPaddle") as!
+        ball = self.childNode(withName: "Ball") as! SKSpriteNode
+        bottomPaddle = self.childNode(withName: "Paddle") as!
         SKSpriteNode
-        counter = self.childNode(withName: "counter") as! SKLabelNode
+//        counter = self.childNode(withName: "counter") as! SKLabelNode
         
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
@@ -34,6 +30,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         border.restitution = 1
         self.physicsBody = border
+        self.physicsWorld.contactDelegate = self
+        
+        
+        
         
         
 //        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
