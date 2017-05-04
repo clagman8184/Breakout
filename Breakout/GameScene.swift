@@ -49,23 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bottomPaddle.position.x = touchLocation.x
         }
     }
-    func didBegin(_ contact: SKPhysicsContact) {
-       
-        let bodyAName = contact.bodyA.node?.name
-        let bodyBName = contact.bodyB.node?.name
-
-     if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
-        {
-            if bodyAName == "Brick"
-            {
-                contact.bodyA.node?.removeFromParent()
-            }
-            else if bodyBName == "Brick"
-            {
-                contact.bodyB.node?.removeFromParent()
-            }
-        }
-    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -90,6 +74,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ball.removeFromParent()
 //                restart()
                 
+            }
+        }
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let bodyAName = contact.bodyA.node?.name
+        let bodyBName = contact.bodyB.node?.name
+        
+        if bodyAName == "Ball" && bodyBName == "Block" || bodyAName == "Block" && bodyBName == "Ball"
+        {
+            if bodyAName == "Block"
+            {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else if bodyBName == "Block"
+            {
+                contact.bodyB.node?.removeFromParent()
             }
         }
     }
