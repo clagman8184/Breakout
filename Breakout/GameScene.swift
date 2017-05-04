@@ -28,10 +28,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
+        ball.speed = 20
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
+        border.restitution = 1
         self.physicsBody = border
+        
+        
+//        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
+//        let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
+//        let topLeft = CGPoint(x: frame.origin.x, y: -frame.origin.y)
+//        let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
+//        
+//        let bottom = SKNode()
+//        bottom.name = "bottom"
+//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: bottomRight)
+//        addChild(bottom)
+//        
+//        
+//        let top = SKNode()
+//        top.name = "top"
+//        bottom.physicsBody = SKPhysicsBody(edgeFrom: topLeft, to: topRight)
+//        addChild(top)
+//        
+//        
+//        let left = SKNode()
+//        left.name = "left"
+//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: topLeft)
+//        addChild(left)
+//        
+//        let right = SKNode()
+//        right.name = "right"
+//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomRight, to: topRight)
+//        addChild(right)
         
         
     }
@@ -92,10 +122,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 ball.removeFromParent()
+//                restart()
+                
             }
         }
     }
     
+//    func restart()
+//    {
+//        let alert = UIAlertController(title: "Play Again?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+//        let restartAction = UIAlertAction(title: "Restart", style: UIAlertActionStyle.default)
+//        alert.addAction(restartAction)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+//        alert.addAction(cancelAction)
+//        present(alert)
+//    }
+
+
     
     
     
