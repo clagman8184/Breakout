@@ -13,14 +13,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
-    var counter = 3
+    var counter = SKLabelNode()
+    
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
+        
+        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "bottomPaddle") as!
         SKSpriteNode
+        counter = self.childNode(withName: "counter") as! SKLabelNode
+        
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
         ball.speed = 20
@@ -61,6 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let touchLocation = touch.location(in: self)
@@ -75,14 +81,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func didBegin(_ contact: SKPhysicsContact) {
+       
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
-        
-        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball" {
-            if bodyAName == "Brick" {
+
+     if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
+        {
+            if bodyAName == "Brick"
+            {
                 contact.bodyA.node?.removeFromParent()
             }
-            else if bodyBName == "Brick" {
+            else if bodyBName == "Brick"
+            {
                 contact.bodyB.node?.removeFromParent()
             }
         }
@@ -92,21 +102,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if ball.position.y <= -250
         {
-            if counter == 3
+            if counter.text == "3"
             {
-                counter -= 1
+                counter.text = "2"
                 ball.position.x = 0
                 ball.position.y = 0
             }
-            else if counter == 2
+            else if counter.text == "2"
             {
-                counter -= 1
+                counter.text = "1"
                 ball.position.x = 0
                 ball.position.y = 0
 
             }
-            else if counter == 1
+            else if counter.text == "1"
             {
+                counter.text = "0"
                 ball.removeFromParent()
 //                restart()
                 
@@ -138,6 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
    
+    
     
     
     
