@@ -108,10 +108,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if counter == 1
             {
                 ball.removeFromParent()
+//                restart()
+                
             }
         }
     }
     
+//    func restart()
+//    {
+//        let alert = UIAlertController(title: "Play Again?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+//        let restartAction = UIAlertAction(title: "Restart", style: UIAlertActionStyle.default)
+//        alert.addAction(restartAction)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+//        alert.addAction(cancelAction)
+//        present(alert)
+//    }
+
+
     
     
     
