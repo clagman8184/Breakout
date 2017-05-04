@@ -20,7 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         
-        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "bottomPaddle") as!
         SKSpriteNode
@@ -33,9 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         self.physicsBody = border
         
-        
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
