@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bottomPaddle = SKSpriteNode()
     var ball = SKSpriteNode()
     var counter = SKLabelNode()
+    var count: Int?
     
     
     override func didMove(to view: SKView) {
@@ -107,9 +108,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 ball.position.x = 0
                 ball.position.y = 0
-//                ball.physicsBody.velocity = CGVectorMake(0, 0)
-//                perform((ball.speed = 150), with: <#T##Any?#>, afterDelay: 1)
-//                
+//                self.count = 1
+//                Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(getter: GameScene.ball), userInfo: nil, repeats: true)
+//                Timer.init(timeInterval: 2, repeats: false, block: nil)
+               
             }
             else if counter.text == "2"
             {
