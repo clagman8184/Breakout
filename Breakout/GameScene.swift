@@ -77,6 +77,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 ball.position.x = 0
                 ball.position.y = 0
+//                ball.physicsBody.velocity = CGVectorMake(0, 0)
+//                perform((ball.speed = 150), with: <#T##Any?#>, afterDelay: 1)
+//                
             }
             else if counter.text == "2"
             {
