@@ -27,9 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
+        ball.speed = 20
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
+        border.restitution = 1
         self.physicsBody = border
         
     }
@@ -86,10 +88,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 ball.removeFromParent()
+//                restart()
+                
             }
         }
     }
     
+//    func restart()
+//    {
+//        let alert = UIAlertController(title: "Play Again?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+//        let restartAction = UIAlertAction(title: "Restart", style: UIAlertActionStyle.default)
+//        alert.addAction(restartAction)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+//        alert.addAction(cancelAction)
+//        present(alert)
+//    }
+
+
     
     
     
