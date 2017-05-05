@@ -78,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if counter.text == "1"
             {
                 counter.text = "0"
-                ball.removeFromParent()
+//                ball.removeFromParent()
 
                 
             }
