@@ -18,14 +18,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
-        
-        
-        
-        ball = self.childNode(withName: "ball") as! SKSpriteNode
-        bottomPaddle = self.childNode(withName: "bottomPaddle") as!
+        ball = self.childNode(withName: "Ball") as! SKSpriteNode
+        bottomPaddle = self.childNode(withName: "Paddle") as!
         SKSpriteNode
-        counter = self.childNode(withName: "counter") as! SKLabelNode
+//        counter = self.childNode(withName: "counter") as! SKLabelNode
         
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
@@ -35,38 +31,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         border.friction = 0
         border.restitution = 1
         self.physicsBody = border
+        self.physicsWorld.contactDelegate = self
         
         
-//        let bottomLeft = CGPoint(x: frame.origin.x, y: frame.origin.y)
-//        let bottomRight = CGPoint(x: -frame.origin.x, y: frame.origin.y)
-//        let topLeft = CGPoint(x: frame.origin.x, y: -frame.origin.y)
-//        let topRight = CGPoint(x: -frame.origin.x, y: -frame.origin.y)
-//        
-//        let bottom = SKNode()
-//        bottom.name = "bottom"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: bottomRight)
-//        addChild(bottom)
-//        
-//        
-//        let top = SKNode()
-//        top.name = "top"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: topLeft, to: topRight)
-//        addChild(top)
-//        
-//        
-//        let left = SKNode()
-//        left.name = "left"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomLeft, to: topLeft)
-//        addChild(left)
-//        
-//        let right = SKNode()
-//        right.name = "right"
-//        bottom.physicsBody = SKPhysicsBody(edgeFrom: bottomRight, to: topRight)
-//        addChild(right)
         
         
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -81,23 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bottomPaddle.position.x = touchLocation.x
         }
     }
-    func didBegin(_ contact: SKPhysicsContact) {
-       
-        let bodyAName = contact.bodyA.node?.name
-        let bodyBName = contact.bodyB.node?.name
-
-     if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
-        {
-            if bodyAName == "Brick"
-            {
-                contact.bodyA.node?.removeFromParent()
-            }
-            else if bodyBName == "Brick"
-            {
-                contact.bodyB.node?.removeFromParent()
-            }
-        }
-    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -126,6 +80,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ball.removeFromParent()
 //                restart()
                 
+            }
+        }
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let bodyAName = contact.bodyA.node?.name
+        let bodyBName = contact.bodyB.node?.name
+        
+        if bodyAName == "Ball" && bodyBName == "Block" || bodyAName == "Block" && bodyBName == "Ball"
+        {
+            if bodyAName == "Block"
+            {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else if bodyBName == "Block"
+            {
+                contact.bodyB.node?.removeFromParent()
             }
         }
     }
