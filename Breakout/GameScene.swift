@@ -63,10 +63,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
-//                self.count = 1
-//                Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(getter: GameScene.ball), userInfo: nil, repeats: true)
-//                Timer.init(timeInterval: 2, repeats: false, block: nil)
-               
+                
+                
             }
             else if counter.text == "2"
             {
