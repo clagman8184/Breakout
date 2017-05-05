@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let touchLocation = touch.location(in: self)
             bottomPaddle.position.x = touchLocation.x
+
         }
     }
     
@@ -73,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 ball.removeFromParent()
-//                restart()
+
                 
             }
         }
@@ -84,31 +85,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
         
-        if bodyAName == "Ball" && bodyBName == "Block" || bodyAName == "Block" && bodyBName == "Ball"
+        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
         {
-            if bodyAName == "Block"
+            if bodyAName == "Brick"
             {
                 contact.bodyA.node?.removeFromParent()
             }
-            else if bodyBName == "Block"
+            else if bodyBName == "Brick"
             {
                 contact.bodyB.node?.removeFromParent()
             }
         }
     }
-    
-//    func restart()
-//    {
-//        let alert = UIAlertController(title: "Play Again?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-//        let restartAction = UIAlertAction(title: "Restart", style: UIAlertActionStyle.default)
-//        alert.addAction(restartAction)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-//        alert.addAction(cancelAction)
-//        present(alert)
-//    }
 
-
-    
     
     
     
