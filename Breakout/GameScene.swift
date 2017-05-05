@@ -12,20 +12,20 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var bottomPaddle = SKSpriteNode()
-    var ball = SKSpriteNode()
+    var Ball = SKSpriteNode()
     var counter = SKLabelNode()
     var count: Int?
     
     
     override func didMove(to view: SKView) {
-        ball = self.childNode(withName: "Ball") as! SKSpriteNode
+        Ball = self.childNode(withName: "Ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "Paddle") as!
         SKSpriteNode
-//        counter = self.childNode(withName: "counter") as! SKLabelNode
+        counter = self.childNode(withName: "counter") as! SKLabelNode
         
         
-        ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
-        ball.speed = 20
+        Ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
+        Ball.speed = 20
         
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
@@ -55,13 +55,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if ball.position.y <= -250
+        if Ball.position.y <= -250
         {
             if counter.text == "3"
             {
                 counter.text = "2"
-                ball.position.x = 0
-                ball.position.y = 0
+                Ball.position.x = 0
+                Ball.position.y = 0
 //                self.count = 1
 //                Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(getter: GameScene.ball), userInfo: nil, repeats: true)
 //                Timer.init(timeInterval: 2, repeats: false, block: nil)
@@ -70,14 +70,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if counter.text == "2"
             {
                 counter.text = "1"
-                ball.position.x = 0
-                ball.position.y = 0
+                Ball.position.x = 0
+                Ball.position.y = 0
 
             }
             else if counter.text == "1"
             {
                 counter.text = "0"
-                ball.removeFromParent()
+                Ball.removeFromParent()
 //                restart()
                 
             }
@@ -89,13 +89,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
         
-        if bodyAName == "Ball" && bodyBName == "Block" || bodyAName == "Block" && bodyBName == "Ball"
+        if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
         {
-            if bodyAName == "Block"
+            if bodyAName == "Brick"
             {
                 contact.bodyA.node?.removeFromParent()
             }
-            else if bodyBName == "Block"
+            else if bodyBName == "Brick"
             {
                 contact.bodyB.node?.removeFromParent()
             }
