@@ -92,11 +92,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             if bodyAName == "Brick"
             {
-                contact.bodyA.node?.removeFromParent()
+                contact.bodyA.node?.alpha = 0.3
             }
             else if bodyBName == "Brick"
             {
-                contact.bodyB.node?.removeFromParent()
+                contact.bodyB.node?.alpha = 0.3
             }
         }
     }
