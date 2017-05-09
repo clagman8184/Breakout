@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Ball = self.childNode(withName: "Ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "Paddle") as!
         SKSpriteNode
-        //counter = self.childNode(withName: "counter") as! SKLabelNode
+        counter = self.childNode(withName: "counter") as! SKLabelNode
         
         
         Ball.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 50))
@@ -76,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if counter.text == "1"
             {
                 counter.text = "0"
-//                ball.removeFromParent()
+                Ball.removeFromParent()
 
                 
             }
