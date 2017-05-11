@@ -63,6 +63,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
+                bottomPaddle.position.x = 0
+                bottomPaddle.position.y = -263
                     do {
                 sleep(3)
                 }
@@ -73,6 +75,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "1"
                 Ball.position.x = 0
                 Ball.position.y = 0
+                bottomPaddle.position.x = 0
+                bottomPaddle.position.y = -263
                 do{
                 sleep(3)
                 }
