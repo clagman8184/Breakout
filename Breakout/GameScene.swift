@@ -18,7 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    
     override func didMove(to view: SKView) {
         Ball = self.childNode(withName: "Ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "Paddle") as!
