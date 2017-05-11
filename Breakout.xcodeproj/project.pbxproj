@@ -305,6 +305,7 @@
 				D71E445C1EB0EA4500D990F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
