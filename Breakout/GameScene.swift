@@ -16,7 +16,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var counter = SKLabelNode()
     var count: Int?
     
-    
     override func didMove(to view: SKView) {
         Ball = self.childNode(withName: "Ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "Paddle") as!
@@ -92,11 +91,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             if bodyAName == "Brick"
             {
-                contact.bodyA.node?.alpha = 0.3
+                contact.bodyA.node?.removeFromParent()
             }
             else if bodyBName == "Brick"
             {
-                contact.bodyB.node?.alpha = 0.3
+                contact.bodyB.node?.removeFromParent()
             }
         }
     }
