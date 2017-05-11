@@ -63,7 +63,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
-                
+                    do {
+                sleep(3)
+                }
                 
             }
             else if counter.text == "2"
@@ -71,7 +73,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "1"
                 Ball.position.x = 0
                 Ball.position.y = 0
-
+                do{
+                sleep(3)
+                }
             }
             else if counter.text == "1"
             {
