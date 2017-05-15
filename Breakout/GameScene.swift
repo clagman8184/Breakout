@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var Ball = SKSpriteNode()
     var counter = SKLabelNode()
     var brickCounter: Int?
+    var gameover = SKLabelNode()
     
     
     
@@ -85,8 +86,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-
                 
+                
+            }
+            else
+            {
+                gameover.isHidden = false
             }
         }
     }
