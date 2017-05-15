@@ -57,6 +57,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
+        
+        
         if Ball.position.y <= -250
         {
             if counter.text == "3"
@@ -89,11 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
             }
-            else
-            {
-                gameover.isHidden = false
-            }
+           
         }
+        
     }
     
 
