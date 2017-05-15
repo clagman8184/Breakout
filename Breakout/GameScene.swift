@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var Ball = SKSpriteNode()
     var counter = SKLabelNode()
     var brickCounter: Int?
+    var gameover = SKLabelNode()
     
     
     
@@ -56,6 +57,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
+        
+        
         if Ball.position.y <= -250
         {
             if counter.text == "3"
@@ -85,10 +88,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-
+                
                 
             }
+           
         }
+        
     }
     
 
