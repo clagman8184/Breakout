@@ -14,15 +14,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bottomPaddle = SKSpriteNode()
     var Ball = SKSpriteNode()
     var counter = SKLabelNode()
-    var brickCounter: Int?
-    var gameover = SKLabelNode()
+    var brickCounter: Int = 0
+    var youWinLabel = SKLabelNode()
     
     
     
     override func didMove(to view: SKView) {
+        
         Ball = self.childNode(withName: "Ball") as! SKSpriteNode
         bottomPaddle = self.childNode(withName: "Paddle") as!
         SKSpriteNode
+        youWinLabel = self.childNode(withName: "youWin!") as! SKLabelNode
         counter = self.childNode(withName: "counter") as! SKLabelNode
         Ball.physicsBody?.applyImpulse(CGVector(dx: 25, dy: 25))
         Ball.speed = 20
@@ -33,17 +35,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsBody = border
         self.physicsWorld.contactDelegate = self
-        
-        
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let touchLocation = touch.location(in: self)
             bottomPaddle.position.x = touchLocation.x
-
+            
         }
     }
     
@@ -56,8 +54,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        
-        
+        if brickCounter == 10
+        {
+            youWinLabel.text = "You Win!"
+            Ball.removeFromParent()
+        }
         
         if Ball.position.y <= -250
         {
@@ -66,11 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
-                bottomPaddle.position.x = 0
-                bottomPaddle.position.y = -263
-                    do {
-                sleep(3)
-                }
+                
                 
             }
             else if counter.text == "2"
@@ -78,45 +75,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "1"
                 Ball.position.x = 0
                 Ball.position.y = 0
-                bottomPaddle.position.x = 0
-                bottomPaddle.position.y = -263
-                do{
-                sleep(3)
-                }
+                
             }
             else if counter.text == "1"
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-                
-                
-            }
-           
-        }
+                youWinLabel.text = "You Lost!"
         
+            }
+        }
     }
     
-
+    
     func didBegin(_ contact: SKPhysicsContact) {
         
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
-
+        
         if bodyAName == "Ball" && bodyBName == "Brick" || bodyAName == "Brick" && bodyBName == "Ball"
         {
             if bodyAName == "Brick"
             {
-                    contact.bodyA.node?.removeFromParent()
+                contact.bodyA.node?.removeFromParent()
+                brickCounter += 1
             }
                 
             else if bodyBName == "Brick"
             {
                 contact.bodyB.node?.removeFromParent()
-
+                brickCounter += 1
             }
+            
+        }
         
-    }
-
-    
+        
     }
 }
