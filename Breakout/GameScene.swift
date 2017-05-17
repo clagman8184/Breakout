@@ -54,11 +54,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        if brickCounter == 10
-        {
-            youWinLabel.text = "You Win!"
-            Ball.removeFromParent()
-        }
+        //        if brickCounter == 10
+        //        {
+        //            youWinLabel.text = "You Win!"
+        //            Ball.removeFromParent()
+        //        }
         
         if Ball.position.y <= -250
         {
@@ -67,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
+                
+                
                 
                 
             }
@@ -81,10 +83,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-                youWinLabel.text = "You Lost!"
-        
+                //                youWinLabel.text = "You Lost!"
+                
             }
         }
+        if Ball.position.x == 0 || Ball.position.y == 0
+        {
+            let wait = DispatchTime.now() + 0.09
+            DispatchQueue.main.asyncAfter(deadline: wait) {
+                
+                self.youWinLabel.text = "Get Ready"
+                
+            }
+            
+            let when = DispatchTime.now() + 0.1
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                
+                
+                sleep(2)
+            }
+        }
+        else if counter.text == "0"
+        {
+            youWinLabel.text = "You Lost!"
+        }
+            
+        else if brickCounter == 10
+        {
+            youWinLabel.text = "You Win!"
+            Ball.removeFromParent()
+        }
+            
+            
+        else
+        {
+            let stahp = DispatchTime.now() + 0.1
+            DispatchQueue.main.asyncAfter(deadline: stahp) {
+                
+                
+                self.youWinLabel.text = ""
+            }
+            
+        }
+        
+        
     }
     
     
