@@ -18,7 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var youWinLabel = SKLabelNode()
     
     
-    
     override func didMove(to view: SKView) {
         
         Ball = self.childNode(withName: "Ball") as! SKSpriteNode
@@ -54,11 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        //        if brickCounter == 10
-        //        {
-        //            youWinLabel.text = "You Win!"
-        //            Ball.removeFromParent()
-        //        }
         
         if Ball.position.y <= -250
         {
@@ -67,10 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
-                
-                
-                
-                
+        
             }
             else if counter.text == "2"
             {
@@ -83,8 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-                //                youWinLabel.text = "You Lost!"
-                
+        
             }
         }
         if Ball.position.x == 0 || Ball.position.y == 0
