@@ -11,11 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var bottomPaddle = SKSpriteNode()
-    var Ball = SKSpriteNode()
-    var counter = SKLabelNode()
-    var brickCounter: Int = 0
-    var youWinLabel = SKLabelNode()
+var bottomPaddle = SKSpriteNode()
+var Ball = SKSpriteNode()
+var counter = SKLabelNode()
+var brickCounter: Int = 0
+var youWinLabel = SKLabelNode()
     
     
     override func didMove(to view: SKView) {
@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
         border.restitution = 1
-        
+
         self.physicsBody = border
         self.physicsWorld.contactDelegate = self
     }
@@ -40,7 +40,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let touchLocation = touch.location(in: self)
             bottomPaddle.position.x = touchLocation.x
-            
         }
     }
     
@@ -61,38 +60,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 counter.text = "2"
                 Ball.position.x = 0
                 Ball.position.y = 0
-        
             }
+                
             else if counter.text == "2"
             {
                 counter.text = "1"
                 Ball.position.x = 0
                 Ball.position.y = 0
-                
             }
+                
             else if counter.text == "1"
             {
                 counter.text = "0"
                 Ball.removeFromParent()
-        
             }
         }
+        
         if Ball.position.x == 0 || Ball.position.y == 0
         {
             let wait = DispatchTime.now() + 0.09
             DispatchQueue.main.asyncAfter(deadline: wait) {
-                
                 self.youWinLabel.text = "Get Ready"
-                
             }
             
             let when = DispatchTime.now() + 0.1
             DispatchQueue.main.asyncAfter(deadline: when) {
-                
-                
                 sleep(2)
             }
         }
+            
         else if counter.text == "0"
         {
             youWinLabel.text = "You Lost!"
@@ -103,19 +99,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             youWinLabel.text = "You Win!"
             Ball.removeFromParent()
         }
-            
-            
+        
         else
         {
             let stahp = DispatchTime.now() + 0.1
             DispatchQueue.main.asyncAfter(deadline: stahp) {
-                
-                
                 self.youWinLabel.text = ""
             }
-            
         }
-        
         
     }
     
@@ -140,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         }
-        
-        
+    
     }
+    
 }
